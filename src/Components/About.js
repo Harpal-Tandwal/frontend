@@ -16,6 +16,7 @@ const About=() =>{
       method:"GET",
       headers:{
         Accept:"application/json",
+        "withCredentials" : true,
        "Content-Type":"application/json"
       },
       credentials: 'include'
