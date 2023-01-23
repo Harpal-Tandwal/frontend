@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        body{
+            background:rgba(142, 230, 120, 0.8);
+        }
+        .center{
+            min-width: 500px;
+            margin: 0;
+        }
+          .switch{
+            color:aqua;
+            background-color: rgba(13, 244, 190, 0.982);
+        }
+        .myForm{
+            color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+           padding: 16px;
+           margin-bottom: 4px;
+            border: none;
+             border-radius: 10px;
+           max-width: fit-content;
+           background-color: rgba(79, 165, 42, 0.403);
+        }
+        .myForm input{
+            padding:5px;
+            margin:4px;
+            width:300px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 19px;
+            
+        }
+        .appliance-switch-contaier{
+            /* border: 2px solid red; */
+            margin-top: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            list-style: none;
+            position: relative;
+            right: 35px;
+            
+
+        }
+        .appliance-switch-contaier li{
+            padding: 6px;
+            font-size: 22px;
+            font-weight: 300;
+            max-width: 40%;
+            min-width: 25%;
+            margin: 0px;
+            border: none;
+            border-radius: 10px;
+            
+        }
+        .main-list{
+            list-style: none;
+            
+        }  .switch{
+            color:aqua;
+            background-color: rgba(73, 231, 213, 0.652);
+            border-radius: 50px;
+            transition: 0.9s;
+        }
+        .switch:hover{
+            background-color:rgb(13, 240, 244) ;
+            color:rgb(27, 20, 244);
+        }
+        .appliance-name{
+            background-color: rgba(88, 230, 66, 0.473);
+        }
+        .switch-2{
+            background-color: beige;
+        }
+      
+    </style>
+</head>
+<body>
+    <center class="center">
+        <h2>welcome to hpTech</h2>
+        <section>
+    <form action="/get"  class="myForm">
+    <input type="text" name="relay" placeholder="enter relay number" autocomplete="off">
+    <input type="text" name="name"placeholder="enter appliance name"autocomplete="off" >
+    <input type="submit" onclick="loadAppliance()">
+  </form>
+
+        </section>
+        <section>
+            <form action="/get" class="myForm">
+            <input type="text" name="ssid" placeholder="wifiName"autocomplete="off">
+            <input type="text" name="password"placeholder="enterpassword" autocomplete="off">
+            <input type="submit">
+          
+          </form>
+                </section>
+         <section>
+
+           <ul class="main-list">
+            <li>
+                <ul class="appliance-switch-contaier"> 
+                    <li class="appliance-name">fan1</li>
+                    <li class="switch"  id="b1" onclick="toggle('b1')">button</li>
+                    <li class="switch-2"  id="b11" onclick="toggle2('b11')">activate</li>
+                </ul>
+            </li>
+            <li>
+                <ul class="appliance-switch-contaier"> 
+                    <li class="appliance-name">fan1</li>
+                    <li class="switch" id="b2" onclick="toggle('b2')">button</li>
+                    <li class="switch-2"  id="b22" onclick="toggle2('b22')">activate</li>
+                </ul>
+            </li>
+            <li>
+                <ul class="appliance-switch-contaier"> 
+                    <li class="appliance-name">fan1</li>
+                    <li class="switch"id="b3" onclick="toggle('b3')">button</li>
+                    <li class="switch-2"  id="b33" onclick="toggle2('b33')">activate</li>
+                </ul>
+            </li>
+            <li>
+                <ul class="appliance-switch-contaier"> 
+                    <li class="appliance-name">fan1</li>
+                    <li class="switch"id="b4" onclick="toggle('b4')">button</li>
+                    <li class="switch-2"  id="b44" onclick="toggle2('b44')">activate</li>
+                </ul>
+            </li>
+           </ul> 
+
+         </section >
+    </center>
+    <script>
+       const loadAppliance= async  ()=>{
+        event.preventDefault();
+         fetch('./test')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+
+  
+         
+         }
+         const cars = ["Saab", "Vol", "BMW"];
+        //  var len= cars.length;
+        //  for(let i=0; i<len;i++){
+        //  const element = document.getElementsByClassName('appliance-name')[1].innerHTML=cars;
+//   element.innerHTML=cars[i]
+// }
+         function toggle( id){
+            var e = document.getElementById(id);
+            var val = e.innerHTML
+            if(val =="ON"){
+                e.innerHTML="OFF";
+            }else{
+               e.innerHTML="ON"
+            }
+            console.log(val);
+
+         }
+         function toggle2( id){
+            var e = document.getElementById(id);
+            var val = e.innerHTML
+            if(val =="activate"){
+                e.innerHTML="deactivate";
+            }else{
+               e.innerHTML="activate"
+            }
+            console.log(val);
+
+         }
+    
+    </script>
+</body>
+</html>
