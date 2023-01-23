@@ -10,12 +10,15 @@ const About=() =>{
 
 
   const navigate = useNavigate();
+
+ 
  const callAboutPage = async()=>{
   try{
+    
     const res= await fetch("https://iot-backend-xvij.onrender.com/aboutme",{
       method:"GET",
       headers:{
-        Accept:"application/json",
+        // Accept:"application/json",
        "Content-Type":"application/json"
       },
       mode:"cors",
