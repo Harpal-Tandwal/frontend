@@ -8,7 +8,8 @@ const About=() =>{
   const  [projectName,setprojectName]=useState('');
   const [prjct,setProjects]= useState("");
   const navigate = useNavigate();
-
+const BASE_URL = "https://iot-backend-xvij.onrender.com";
+// const BASE_URL = "http://localhost:5000";
   
   var Cookie =
 {
@@ -91,7 +92,7 @@ const About=() =>{
   try{
     var token= Cookie.get("jwtoken");
     console.log("token picked from cookies :",token)
-    const res= await fetch("https://iot-backend-xvij.onrender.com/aboutme",{
+    const res= await fetch(BASE_URL+"/aboutme",{
       method:"POST",
       headers:{
         Accept:"application/json",
@@ -118,7 +119,7 @@ const About=() =>{
 //  **************load projects************
 const loadProjects = async()=>{
   try{
-    const res = await fetch("https://iot-backend-xvij.onrender.com/showprojects",{
+    const res = await fetch(BASE_URL+"/showprojects",{
       method:"GET",
       headers:{
         Accept:"application/json",
@@ -146,7 +147,7 @@ const loadProjects = async()=>{
  
  const createProject=async (e)=>{
   e.preventDefault();
-  const res = await fetch("https://iot-backend-xvij.onrender.com/createproject",{
+  const res = await fetch(BASE_URL+"/createproject",{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -179,7 +180,7 @@ const updateOne= async (key,obj)=>{
     newValue:newValue
    }
    console.log(status)
-  const res = await fetch("https://iot-backend-xvij.onrender.com/updateone",{
+  const res = await fetch(BASE_URL+"/updateone",{
     method:"POST",
     headers:{
       "Content-Type":"application/json"

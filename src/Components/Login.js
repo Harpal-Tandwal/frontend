@@ -4,7 +4,8 @@ import Footer from './footer';
 
 
 
-
+const BASE_URL = "https://iot-backend-xvij.onrender.com";
+// const BASE_URL = "http://localhost:5000";
 export default function Login() {
 
   var Cookie =
@@ -91,7 +92,7 @@ export default function Login() {
     // console.log("A")
 
 
-    const res= await fetch("https://iot-backend-xvij.onrender.com/signin",{ //https://iot-backend-xvij.onrender.com
+    const res= await fetch(BASE_URL+"/signin",{ //https://iot-backend-xvij.onrender.com
       method:"POST",
       headers:{
         "Content-Type":"application/json"
