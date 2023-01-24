@@ -119,13 +119,15 @@ const BASE_URL = "https://iot-backend-xvij.onrender.com";
 //  **************load projects************
 const loadProjects = async()=>{
   try{
+    var token= Cookie.get("jwtoken");
     const res = await fetch(BASE_URL+"/showprojects",{
-      method:"GET",
+      method:"POST",
       headers:{
         Accept:"application/json",
        "Content-Type":"application/json"
       },
-      credentials: 'include'
+      credentials: 'include',
+      body:JSON.stringify({token:token})
     });
     const projects = await res.json();
     // console.log(projects);
