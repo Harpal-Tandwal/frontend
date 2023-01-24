@@ -1,7 +1,17 @@
 import React,{useState} from 'react'
 import { NavLink ,useNavigate} from 'react-router-dom'
 import Footer from './footer';
+
+import { useCookies } from 'react-cookie';
+
+
 export default function Login() {
+  const [cookies, setCookie] = useCookies(['user']);
+  const handle = () => {
+    setCookie('jwtoken', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NkZjA1NGFmZGYyNmFhMTRlYTQzOTEiLCJpYXQiOjE2NzQ0OTk3Njl9.4TNxrPX5YIhYvf3mOmoF61Xmj0A8GnWbrFgVNWuL-14", { path: '/' });
+  };
+
+
   const  [email,setEmail]=useState('')
   const  [password,setPassword]=useState('')
   const navigate = useNavigate();
@@ -16,8 +26,10 @@ export default function Login() {
       headers:{
         "Content-Type":"application/json"
       },
-     credentials:true,
-      body:JSON.stringify({email ,password })
+      mode:"cors",
+    body:JSON.stringify({email ,password },
+      { credentials: 'include'},
+      )
 
     })
     const data = res.json();
@@ -27,6 +39,7 @@ export default function Login() {
     }else{
       window.alert("login succesful");
       navigate("/about")
+      handle();
     }
   }
   return (
